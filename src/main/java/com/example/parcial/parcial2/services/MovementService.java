@@ -51,6 +51,11 @@ public class MovementService {
                 book.setAvailable(false);
             }
         } else {
+            long borrowings = movementRepository.countByLectorAndBookAndType(lector, book, MovementType.BORROWING);
+            long returns = movementRepository.countByLectorAndBookAndType(lector, book, MovementType.RETURN);
+            if (returns >= borrowings) {
+                throw new RuntimeException("Lector has no borrowed copy of this book to return");
+            }
             book.setAvailableCount(book.getAvailableCount() + 1);
             if (book.getAvailableCount() > 0) {
                 book.setAvailable(true);
