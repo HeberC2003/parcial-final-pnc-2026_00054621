@@ -1,4 +1,4 @@
-# [Nombre] [Carné]
+# Heber Canales 00054621
 
 ## Indicaciones
 
