@@ -52,6 +52,9 @@ public class MovementService {
             }
         } else {
             book.setAvailableCount(book.getAvailableCount() + 1);
+            if (book.getAvailableCount() > 0) {
+                book.setAvailable(true);
+            }
         }
 
         bookRepository.save(book);
